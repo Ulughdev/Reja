@@ -1,16 +1,38 @@
-
-// A-TASK
-function countLetter(x, y) {
-    let a = [...y];
-    const b = a.filter(count);
-    function count(value){
-        return value === x;
+// B- TASk
+function Num(value){
+    let x = 0;
+    for(let i=0; i<value.length; i++){
+        if(!isNaN(value[i])){
+            x++;
+        }
     }
-    //console.log(b.length);
-    return b.length;
+    return x;
 }
-const c = countLetter("p", "pablo");
-console.log(c);
+console.log(Num("hdhd7d77dygd7"))
+
+// function Num(a) {
+//     let count = 0;
+//     for(let i=0; i < a.length; i++){
+//         if((a[i]) = Number){
+//             count++;
+//         }
+//     }
+//     return count;
+// };
+
+// console.log(Num("3hegge7dhh77d8dd"))
+// A-TASK
+// function countLetter(x, y) {
+//     let a = [...y];
+//     const b = a.filter(count);
+//     function count(value){
+//         return value === x;
+//     }
+//     //console.log(b.length);
+//     return b.length;
+// }
+// const c = countLetter("p", "pablo");
+// console.log(c);
 
 
 // console.log("Jack Ma maslahatlari");
