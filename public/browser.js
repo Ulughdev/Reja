@@ -39,3 +39,31 @@ document
           console.log("Iltimos qaytatdan harakat qiling");
     });
 })
+
+document.addEventListener("click", function(e){
+    //console.log(e);
+    // Delete oper
+    if(e.target.classList.contains("delete-me")){
+        console.log(e.target);
+        if(confirm("Aniq ochirmoqchimisiz")){
+            axios.post("/delete-item", {id: e.target.getAttribute("data-id")})
+            .then((respose) => {
+                console.log(respose.data);
+                e.target.parentElement.parentElement.remove();
+            })
+            .catch((err) => {
+                console.log("Iltimos qaytadan harakat qiling");
+            });
+            //alert("yes dep javob berildi");
+        } else {
+           // alert("No deb javob berildi")
+        }
+        //alert("Siz delete tugmasini bosdingiz");
+    }
+
+      
+    // edit oper
+    if(e.target.classList.contains("edit-me")){
+        alert("Siz edit tugmasini bosdingiz");
+    }
+})

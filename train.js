@@ -1,14 +1,71 @@
-// B- TASk
-function Num(value){
-    let x = 0;
-    for(let i=0; i<value.length; i++){
-        if(!isNaN(value[i])){
-            x++;
+// C- Task
+const moment = require('moment');
+const time = moment().format('h:mm');
+class Shop {
+    #non;
+    #lagmon;
+    #cola;
+
+
+    constructor(non, lagmon, cola){
+        this.#non = non;
+        this.#lagmon = lagmon;
+        this.#cola = this.cola;
+    };
+    
+    qoldiq(a, b, c){
+        console.log(`Salom Jonibek hozir ${time} ${this.#non}ta non, ${this.#lagmon}ta lagmon, mavjud!`)
+
+    };
+
+    sotish(prodact, sell){
+        if(prodact='non'){
+            this.#non -= sell;
+        }if(prodact='lagmon'){
+            this.#lagmon -= sell;
+        } if(prodact = 'cola') {
+            this.#cola -= sell;
+
+        } else {
+            console.log("bizda bunday mahsulot yoq")
         }
-    }
-    return x;
+
+    };
+
+    qabul(prodact, buy){
+     if(prodact='non'){
+            this.#non += buy;
+        }if(prodact='lagmon'){
+            this.#lagmon += buy;
+        } if(prodact = 'cola') {
+            this.#cola += buy;
+
+        } else {
+            console.log("bizda bunday mahsulot yoq")
+        }
+    };
 }
-console.log(Num("hdhd7d77dygd7"))
+
+const shop = new Shop(4,5,2);
+shop.qoldiq();
+shop.sotish('non', 3);
+shop.qabul('lagmon', 10)
+shop.qoldiq()
+//console.log(shop.remainder());
+
+
+
+// B- TASk
+// function Num(value){
+//     let x = 0;
+//     for(let i=0; i<value.length; i++){
+//         if(!isNaN(value[i])){
+//             x++;
+//         }
+//     }
+//     return x;
+// }
+// console.log(Num("hdhd7d77dygd7"))
 
 // function Num(a) {
 //     let count = 0;
