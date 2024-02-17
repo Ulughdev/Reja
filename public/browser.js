@@ -1,3 +1,7 @@
+//const { response } = require("express");
+
+//const { response } = require("./app");
+
 console.log("FrontEnd jS ishga tushdi");
 
 function itemTemplate(item){
@@ -6,12 +10,12 @@ function itemTemplate(item){
     <span class="item-text">${item.reja}</span>
     <div>
       <button
-          data-id=${item._id}"
+          data-id=${item._id}
           class="edit-me btn btn-secondary btn-sm mr-1">
           Ozgartirish
       </button>
       <button 
-      data-id=${item._id}"
+      data-id=${item._id}
       class="delete-me btn btn-danger btn-sm">
       Ochirish
       </button>
@@ -64,6 +68,38 @@ document.addEventListener("click", function(e){
       
     // edit oper
     if(e.target.classList.contains("edit-me")){
-        alert("Siz edit tugmasini bosdingiz");
+        //alert("Siz edit tugmasini bosdingiz");
+        let userInput = prompt(
+            "ozgartirish kiriting",
+            e.target.parentElement.parentElement.querySelector(".item-text").innerHTML);
+
+        if (userInput){
+            axios
+            .post("/edit-item", {
+                id: e.target.getAttribute("data-id"), 
+                new_input: userInput,
+         })
+         .then((response) => {
+            console.log(response.data);
+            e.target.parentElement.parentElement.querySelector(
+                ".item-text"
+                ).innerHTML = userInput;
+
+         })
+         .catch((err) => {
+
+            console.log("iltimos qaytadan urunib koring")
+         });
+        }
     }
+});
+
+document.getElementById("clean-all").addEventListener("click", function(){
+    axios.post("/delete-all", {delete_all: true}).then((respose) => {
+        alert(respose.data.state);
+       document.location.reload();
+    })
+    .catch((err) => {
+
+    })
 })

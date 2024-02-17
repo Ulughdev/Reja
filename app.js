@@ -13,7 +13,7 @@ fs.readFile("database/user.json", "utf8", (err, data) => {
     } else {
         user = JSON.parse(data);
     }
-})
+});
 
 //MongoDB connect chaqirish
 const db = require("./server").db();
@@ -65,8 +65,26 @@ app.post("/delete-item", (req, res) => {
 
 });
 
+app.post("/edit-item", (req, res) => {
+    const data = req.body;
+    console.log(data);
+    db.collection("plans").findOneAndUpdate({_id: new mongodb.ObjectId(data.id)}, {$set: {reja: data.new_input} }, 
+        function (err, data) {
+            res.json({ state: "success" })
+        });
+    //res.end("done");
+});
 
-app.get('/', function(req, res) {
+app.post("/delete-all", (req, res) => {
+    if(req.body.delete_all) {
+        db.collection("plans").deleteMany(function(){
+            res.json({state: "All plans have been deleted"})
+        })
+    }
+})
+
+
+app.get("/", function(req, res) {
     console.log('user entered /');
     db.collection("plans")
     .find()
@@ -75,9 +93,9 @@ app.get('/', function(req, res) {
           console.log(err);
           res.end("something went wrong");
         } else {
-       //console.log(data);
+       console.log(data);
        res.render("reja",{items: data});
-    };
+    }
   });
     //res.render("reja");
 });
