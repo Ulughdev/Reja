@@ -1,20 +1,11 @@
+// E - TASK
 
+function getReverse(a) {
+    let b = [...a];
+    let c = b.reverse();
+    let d = c.join("");
+    return d;
+}
 
-
-//Task - D
-
-function checkCounter(string1, string2) {
-    let a = [...string1];
-    let b = [...string2];
-    if(a.length == b.length) {
-        return true ;
-    } else {
-        return false ;
-    }
-
-};
-
-const a = checkCounter("mitgdoup", "gmtiprou");
-
-console.log(a);
-
+const h = getReverse("hello");
+console.log(h);
